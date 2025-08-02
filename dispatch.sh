@@ -34,8 +34,8 @@ VALIDATE(){
     fi
 }
 
-dnf install python3 gcc python3-devel -y &>>$LOG_FILE
-VALIDATE $? "Install Python3 packages"
+dnf install golang -y -y &>>$LOG_FILE
+VALIDATE $? "Install Go Lang packages"
 
 id roboshop &>>$LOG_FILE
 if [ $? -ne 0 ]
@@ -57,7 +57,9 @@ cd /app
 unzip /tmp/dispatch.zip &>>$LOG_FILE
 VALIDATE $? "unzipping dispatch"
 
-pip3 install -r requirements.txt &>>$LOG_FILE
+go mod init dispatch &>>$LOG_FILE
+go get &>>$LOG_FILE
+go build &>>$LOG_FILE
 VALIDATE $? "Installing dependencies"
 
 cp $SCRIPT_DIR/dispatch.service /etc/systemd/system/dispatch.service &>>$LOG_FILE
