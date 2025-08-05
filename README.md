@@ -25,4 +25,3 @@ RoboShop has multiple microservices like frontend, catalogue, user, cart, paymen
 - `shipping.sh` – Java service
 - `mongodb.sh`, `mysql.sh` – Databases
 - `redis.sh`, `rabbitmq.sh` – Support services
-- `common.sh` – Common reusable functions
